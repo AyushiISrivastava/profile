@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var multer  = require('multer');
 var upload = multer();
+var path = require('path')
 var Schema = require("./model.js");
 
 app.use(bodyParser.json());
@@ -13,8 +14,10 @@ mongoose.connect('mongodb://localhost:27017/profile',
 		useNewUrlParser: true,
 		useUnifiedTopology: true 
 	});
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+app.get('/',function(req,res){
+	res.sendFile(path.join(__dirname + '/profile.html'))
+})
 
 app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {
 	const user = mongoose.model('user_profile', Schema);
@@ -28,17 +31,6 @@ app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {
 		res.json(userData);
 		
 	});		
-	// var profile = req.body;
-	// console.log(profile);
-	console.log("before");
-	// userProfile.addUserProfile(profile, function(err, profile){
-	// 	if(err){
-	// 		throw err;
-	// 	}
-	// 	console.log("inside user profile");
-	// 	res.json(profile);
-	// 	res.sendStatus(200);
-	// });
 })
 
 app.listen(3000);
