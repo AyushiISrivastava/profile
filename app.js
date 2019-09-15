@@ -34,13 +34,20 @@ app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {
 	var resume = Buffer.from(req.file+".pdf");
 	req.body.resumeUploaded = resume;
 	var userData = new user(req.body);
+	if(isNaN(userData.phoneNo) || userData.phoneNo.length < 10 || userData.phoneNo.length > 10){
+		res.send("INVALID_PHNO");
+	}
+	var regularExpression = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(!regularExpression.test(userData.email)){
+		res.send("INVALID_EMAIL");	
+	}
 	userData.save(function(err, userData){
 		if(err){
-			console.log(err);
+			res.send(err);
 		}
-		res.json(userData);
-		
+		res.json(userData);		
 	});		
+
 })
 
 app.listen(3000);
