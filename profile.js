@@ -79,7 +79,8 @@ document.getElementById("button").addEventListener("click", function(event){
 		    method: 'post',
 		    url: url,
 		    data: data,
-		    config: { headers: {'Content-Type': 'multipart/form-data' }}
+		    config: { headers: { 'crossDomain': true,
+									'Content-Type': 'multipart/form-data'}}
 		    })
 		    .then(function (response) {
 		    	if(response.data == "INVALID_EMAIL") {

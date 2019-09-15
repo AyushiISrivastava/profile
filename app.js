@@ -6,6 +6,7 @@ var multer  = require('multer');
 var upload = multer();
 var path = require('path')
 var Schema = require("./model.js");
+var cors = require('cors');
 
 app.use(bodyParser.json());
 
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://localhost:27017/profile',
 	});
 
 console.log(__dirname);
+
+app.use(cors());
 
 app.get('/',function(req,res){
 	res.sendFile(path.join(__dirname,'public/profile.html'))
@@ -35,7 +38,7 @@ app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {
 	req.body.resumeUploaded = resume;
 	var userData = new user(req.body);
 	if(isNaN(userData.phoneNo) || userData.phoneNo.length < 10 || userData.phoneNo.length > 10){
-		res.send("INVALID_PHNO");
+		res.send("INVALID_EMAIL");
 	}
 	var regularExpression = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if(!regularExpression.test(userData.email)){
