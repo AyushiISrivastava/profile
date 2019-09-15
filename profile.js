@@ -1,4 +1,5 @@
 var times = 0;
+var cookie_name = "Counter_Cookie";
 document.getElementById("button").addEventListener("click", function(event){
 	event.preventDefault();
 	if(times > 0){
@@ -123,3 +124,52 @@ function preventInput(evnt) {
 		}
 	}
 }
+
+function doCookie() {
+	if(document.cookie) {
+		index = document.cookie.indexOf(cookie_name);
+	} 
+	else {
+		index = -1;
+	}
+	var expires = "Monday, 04-Apr-2020 05:00:00 GMT"
+	if (index == -1) {
+		document.cookie=cookie_name+"=1; expires=" + expires;
+	} else {
+		countbegin = (document.cookie.indexOf("=", index) + 1);
+		countend = document.cookie.indexOf(";", index);
+		if (countend == -1) {
+			countend = document.cookie.length;
+		}
+		count = eval(document.cookie.substring(countbegin, countend)) + 1;
+		document.cookie=cookie_name+"="+count+"; expires=" + expires;
+	}
+}
+
+function gettimes() {
+	if(document.cookie) {
+		index = document.cookie.indexOf(cookie_name);
+		if (index != -1) {
+			countbegin = (document.cookie.indexOf("=", index) + 1);
+			countend = document.cookie.indexOf(";", index);
+			if (countend == -1) {
+				countend = document.cookie.length;
+			}
+			count = document.cookie.substring(countbegin, countend);
+			if (count == 1) {
+			return (count+" time");
+			} else {
+			return (count+" times");
+			}
+		}
+	}
+return ("0 times");
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	var cookie = document.getElementById("cookie");
+    cookie.innerHTML = "<b>You have been to my site "+gettimes()+" before.</b>";
+    cookie.style.color = "#86C5DA";
+});
+
