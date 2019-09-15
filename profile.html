@@ -5,7 +5,7 @@
     <meta name="viewport"
       content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="/css/profile.css">		
+      <link rel="stylesheet" type="text/css" href="/css/profile.css">	
 	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -18,17 +18,21 @@
 	   	</header>
 	   	<div>
 	   		<label>Username</label><br/>
-	   		<input type="text" id="username" /><br/>
+	   		<input type="text" id="username" placeholder="Enter name" /><br/>
 	   		<label>Phone No.</label><br/>
-	   		<input type="text" id="phno" /><br/>
+	   		<input type="text" id="phno" placeholder="Enter phone number" onkeydown="preventInput(event)" /><br/>
 	   		<label>Email Id</label><br/>
-	   		<input type="text" id="email" /><br/>
+	   		<input type="text" id="email" placeholder="Enter email id"/><br/>
 	   		<label>Job Title</label><br/>
-	   		<input type="text" id="title" /><br/>
+	   		<input type="text" id="title" placeholder="Enter job title"/><br/>
 	   		<label>Resume Upload</label><br/>
 	   		<input type="file" id="resume" accept="application/pdf"/><br/>
 	   		<hr/>
-			<p><a href="" id="button">Submit</a></p>
-	   	</div></div>
+			<p><a id="button" href="">Submit</a></p>
+	   	</div>
+	   		   	<div id="snackbar"></div>
+
+	   	</div>
+	   	      <script type="text/javascript" src="profile.js"></script>	
 	</body>
 </html>

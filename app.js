@@ -25,6 +25,10 @@ app.get('/css/profile.css',function(req,res){
 	res.sendFile(path.join(__dirname + '/public/css/profile.css'))
 })
 
+app.get('/profile.js',function(req,res){
+	res.sendFile(path.join(__dirname + '/public/js/profile.js'))
+})
+
 app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {
 	const user = mongoose.model('user_profile', Schema);
 	var resume = Buffer.from(req.file+".pdf");
