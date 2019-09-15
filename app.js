@@ -15,8 +15,14 @@ mongoose.connect('mongodb://localhost:27017/profile',
 		useUnifiedTopology: true 
 	});
 
+console.log(__dirname);
+
 app.get('/',function(req,res){
-	res.sendFile(path.join(__dirname + '/profile.html'))
+	res.sendFile(path.join(__dirname,'public/profile.html'))
+})
+
+app.get('/css/profile.css',function(req,res){
+	res.sendFile(path.join(__dirname + '/public/css/profile.css'))
 })
 
 app.post('/api/save', upload.single('resumeUploaded'), function (req, res) {

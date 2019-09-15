@@ -1,0 +1,32 @@
+#formDiv {
+	background: #F6FBFC;
+	width: 50%;
+	padding: 20px;
+	box-shadow: 18px 18px 18px 10px #D4EBF2;
+	height: 550px;
+}
+
+body {
+	background-color:#EEF7FA;
+}
+
+a:link, a:visited {
+  background-color: #86C5DA;
+  color: white;
+  padding: 10px 20px;
+  border: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10%;
+  text-align:center;
+}
+
+a:hover, a:active {
+  background-color: #72BCD4;
+  font-size: 18px
+}
+
+p, h1{
+	text-align: center
+}
