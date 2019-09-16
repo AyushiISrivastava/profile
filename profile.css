@@ -3,7 +3,17 @@
 	width: 50%;
 	padding: 20px;
 	box-shadow: 18px 18px 18px 10px #D4EBF2;
-	height: 550px;
+	height: 770px;
+}
+
+@media only screen and (max-width: 600px) {
+  #formDiv {
+    background: #F6FBFC;
+    width: 80%;
+    padding: 20px;
+    box-shadow: 18px 18px 18px 10px #D4EBF2;
+    height: 770px;
+  }
 }
 
 body {
