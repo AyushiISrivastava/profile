@@ -18,8 +18,6 @@ mongoose.connect('mongodb://localhost:27017/profile',
 
 console.log(__dirname);
 
-// app.options('*', cors());
-
 app.use(cors());
 
 app.get('/',function(req,res){
